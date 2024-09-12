@@ -1,0 +1,96 @@
+<div class="bg-info p-2">
+  <h1>Structural Directive</h1>
+  *ngIF, *ngFor
+</div>
+
+<div class="row pt-3">
+  <div *ngIf="isDiv1Visible" class="col-3 bg-danger p-4 text-center">
+    <h1>Div 1</h1>
+  </div>
+  <div *ngIf="isDiv2Visible" class="col-3 bg-success p-4 text-center">
+    <h1>div 2</h1>
+  </div>
+  <div *ngIf="num1 == num2" class="col-3 bg-secondary p-4 text-center">
+    <h1>div 3</h1>
+  </div>
+  <div *ngIf="isChecked || selectedState == 'dhaka' " class="col-3 bg-primary p-4 text-center">
+    <h1>{{ selectedState }}</h1>
+  </div>
+</div>
+
+<div class="row pt-3">
+  <div class="col-3 text-center">
+    <button class="btn btn-danger" (click)="hide()">Hide</button>
+    <button class="btn btn-primary mx-2" (click)="show()">Show</button>
+  </div>
+  <div class="col-3 text-center">
+    <button class="btn btn-success" (click)="toggle()">Toggle</button>
+  </div>
+
+  <div class="col-3 d-flex flex-row">
+    <div class="flex-fill">
+      <input [(ngModel)]="num1" type="text" placeholder="NUM 1">
+    </div>
+    <div>
+      <input [(ngModel)]="num2" type="text" placeholder="Num 2">
+    </div>
+  </div>
+
+  <div class="col-3 d-flex flex-row align-items-center">
+    <div class="flex-fill">
+      <input [(ngModel)]="isChecked" type="checkbox">
+    </div>
+    <div class="flex-fill">
+      <select [(ngModel)]="selectedState">
+        <option value="">Select State</option>
+        <option value="dhaka">Dhaka</option>
+        <option value="pirojpur">Pirojpur</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-3">
+      <ul>
+        <li *ngFor="let city of cityList">{{ city }}</li>
+      </ul>
+    </div>
+    <div class="col-3">
+      <select>
+        <option value="">Select City</option>
+        <option *ngFor="let city of cityList">{{ city }}</option>
+      </select>
+    </div>
+    <div class="col-3">
+      <select>
+        <option value="">Select Student</option>
+        <option *ngFor="let student of studentList" [value]="student.id">{{ student.name }}</option>
+      </select>
+    </div>
+    <div class="col-3"></div>
+</div>
+
+<div class="row">
+  <div class="col-5">
+    <table class="table table-bordered">
+      <thead>
+        <th>SL</th>
+        <th>ID</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>Status</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of studentList; let i = index">
+          <td>{{ i+1 }}</td>
+          <td>{{ item.id }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.city }}</td>
+          <td>{{ item.isActive }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
