@@ -18,11 +18,11 @@ export class StructuralDirectiveComponent {
   selectedState = '';
   cityList : String [] = ["Dhaka", "Pirojpur", "Barguna"]
   studentList : any [] = [
-    {id:1 , name: "Sajjad", city: 'Pirojpur', isActive: true },
-    {id:2 , name: "Sakib", city: 'dhaka', isActive: true },
-    {id:3 , name: "hima", city: 'syleth', isActive: true },
-    {id:4 , name: "rajib", city: 'barguna', isActive: false },
-    {id:5 , name: "arpon", city: 'bramonbaria', isActive: false },
+    {id:1 , name: "Sajjad", city: 'Pirojpur', isActive: true, gender: 'Male' },
+    {id:2 , name: "Sakib", city: 'dhaka', isActive: true, gender: 'Male' },
+    {id:3 , name: "hima", city: 'syleth', isActive: true, gender: 'Female' },
+    {id:4 , name: "rajib", city: 'barguna', isActive: false, gender: 'Male' },
+    {id:5 , name: "arpon", city: 'bramonbaria', isActive: false, gender: 'Male' },
   ]
 
   constructor() {}
