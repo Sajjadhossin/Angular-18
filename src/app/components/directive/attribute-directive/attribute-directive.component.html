@@ -1,0 +1,90 @@
+<div class="bg-info p-2">
+  <h1>Attribute Directive</h1>
+  [ngClass], [ngStyle]</div>
+
+<div class="row pt-3">
+  <div class="col-3 p-4 text-center" [ngClass]="div1bgColor">
+    <h1>Div 1</h1>
+  </div>
+  <div class="col-3 p-4 text-center" [ngClass]="div2Active ? 'bg-success' : 'bg-danger' ">
+    <h1>div 2</h1>
+  </div>
+  <div class="col-3 bg-secondary p-4 text-center" [ngClass]="num1 == num2 ? 'bg-success' : 'bg-danger text-white'">
+    <h1>div 3</h1>
+  </div>
+  <div class="col-3 p-4 text-center" [ngClass]="isChecked ? 'bg-primary' : ' '">
+    <h1>div 4</h1>
+  </div>
+</div>
+
+<div class="row pt-3">
+  <div class="col-3 text-center">
+    <button (click)="addRed()" class="btn btn-danger">Add Red</button>
+    <button (click)="addBlue()" class="btn btn-primary mx-2">Add Blue</button>
+  </div>
+  <div class="col-3 text-center">
+    <button class="btn"  [ngClass]="toogleBtnClass" (click)="toogle()">{{ toogleBtnText }}</button>
+  </div>
+
+  <div class="col-3 d-flex flex-row">
+    <div class="flex-fill">
+      <input [(ngModel)]="num1" type="text" placeholder="NUM 1">
+    </div>
+    <div>
+      <input [(ngModel)]="num2" type="text" placeholder="Num 2">
+    </div>
+  </div>
+
+  <div class="col-3 d-flex flex-row align-items-center">
+    <div class="flex-fill">
+      <input [(ngModel)]="isChecked" type="checkbox">
+    </div>
+    <div class="flex-fill">
+      <select>
+        <option value="">Select State</option>
+        <option value="dhaka">Dhaka</option>
+        <option value="pirojpur">Pirojpur</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<div class="row mt-4">
+  <div class="col-12">
+    <h3>Student List with Attribute Directives</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>SL</th>
+          <th>ID</th>
+          <th>Name</th>
+          <th>City</th>
+          <th>Status</th>
+          <th>Gender</th>
+          <th>Total Marks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let student of studentList; let i = index">
+          <td>{{ i + 1 }}</td>
+          <td>{{ student.id }}</td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.city }}</td>
+          <td [ngStyle]="{'background-color': student.isActive ? 'lightgreen' : 'lightcoral'}">
+            <span [ngClass]="{'text-success': student.isActive, 'text-danger text-white': !student.isActive}">
+              {{ student.isActive ? 'Active' : 'Inactive' }}
+            </span>
+          </td>
+          <td>{{ student.gender }}</td>
+          <td>
+            <div class="progress">
+              <div class="progress-bar" [ngStyle]="{'width.%': student.totalMarks}">{{ student.totalMarks }}</div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
